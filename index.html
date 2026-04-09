@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hunter — Software Engineer specializing in cloud infrastructure, AI systems, and full-stack development.">
+  <title>Hunter — Software Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=DM+Mono:wght@400;500&family=Figtree:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F9F8F6;
+      --surface: #FFFFFF;
+      --ink: #111110;
+      --ink-2: #555550;
+      --ink-3: #9A9991;
+      --rule: #E5E4DF;
+      --accent: #1847D4;
+      --accent-light: #EEF1FC;
+      --tag-bg: #EEEEE9;
+      --tag-text: #3D3D38;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Figtree', system-ui, sans-serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --max-w: 780px;
+      --nav-h: 56px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(249, 248, 246, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+      z-index: 100;
+    }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-family: var(--font-mono);
+      color: var(--ink-2);
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    section { padding: 5rem 0; border-top: 1px solid var(--rule); }
+    section:first-of-type { padding-top: calc(var(--nav-h) + 6rem); border-top: none; }
+
+    .label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: var(--ink-2);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      transition: all 0.15s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .btn-primary:hover { background: var(--accent); }
+
+    .btn-ghost {
+      border-color: var(--rule);
+      color: var(--ink-2);
+      background: var(--surface);
+    }
+    .btn-ghost:hover { border-color: var(--ink-3); color: var(--ink); }
+
+    .exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 2rem;
+    }
+
+    .exp-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      padding-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .exp-role {
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--ink);
+    }
+    .exp-company {
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .exp-desc {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .project-card:hover {
+      border-color: var(--ink-3);
+      transform: translateY(-2px);
+    }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 13.5px;
+      color: var(--ink-2);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    .project-link:hover { color: var(--accent); }
+    .project-link::before { content: '↗ '; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0.25rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem 2rem;
+    }
+
+    .skills-group-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+      margin-bottom: 0.6rem;
+    }
+
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      font-size: 13px;
+      color: var(--ink-2);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 4px 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 3rem clamp(1.5rem, 5vw, 2.5rem);
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+
+    @media (max-width: 580px) {
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .exp-date { margin-bottom: 0.25rem; }
+      .project-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-anim { animation: fadeUp 0.6s ease both; }
+    .hero-anim:nth-child(2) { animation-delay: 0.08s; }
+    .hero-anim:nth-child(3) { animation-delay: 0.16s; }
+    .hero-anim:nth-child(4) { animation-delay: 0.22s; }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#hero" class="nav-name">Hunter</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="mailto:your@email.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <p class="label hero-anim">Software Engineer</p>
+      <h1 class="hero-anim">
+        Building systems<br>
+        that <em>scale</em>.
+      </h1>
+      <p class="hero-tagline hero-anim">
+        I design and ship cloud-native infrastructure, full-stack web applications, and AI-powered automations.
+        Currently studying Software Engineering at BYU-Idaho while leading an AWS cloud migration at a PropTech startup.
+      </p>
+      <div class="hero-links hero-anim">
+        <a href="https://github.com/YOUR-HANDLE" target="_blank" rel="noopener" class="btn btn-primary">
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener" class="btn btn-ghost">
+          LinkedIn
+        </a>
+        <a href="mailto:your@email.com" class="btn btn-ghost">
+          your@email.com
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <p class="label">Work</p>
+      <h2>Experience</h2>
+
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <span class="exp-date">2024 — Present</span>
+          <div>
+            <p class="exp-role">Lead Developer (Remote Internship)</p>
+            <p class="exp-company">PropTech Startup — Rexburg, ID</p>
+            <p class="exp-desc">
+              Inherited and stabilized a modular SaaS platform (U2-QBO) bridging utility billing and real estate
+              management with QuickBooks Online sync. Leading full AWS cloud migration — architecting Lambda functions,
+              DynamoDB tables, and IAM policies from scratch. Own sprint planning, infrastructure decisions, and
+              stakeholder communication as the sole engineer on the codebase.
+            </p>
+            <div class="tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Lambda</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Cloud Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-date">2024 — Present</span>
+          <div>
+            <p class="exp-role">Freelance AI Developer</p>
+            <p class="exp-company">Self-Employed — Eastern Idaho</p>
+            <p class="exp-desc">
+              Building AI-powered automations and web applications for small healthcare practices and local
+              businesses. Deployed self-hosted n8n automation infrastructure on DigitalOcean with Docker Compose,
+              Nginx, and SSL. Delivering workflows for appointment reminders, billing triggers, lead follow-up,
+              and AI document processing.
+            </p>
+            <div class="tags">
+              <span class="tag">n8n</span>
+              <span class="tag">Docker</span>
+              <span class="tag">DigitalOcean</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">AI Automation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="label">Selected Work</p>
+      <h2>Projects</h2>
+
+      <div class="project-grid">
+
+        <div class="project-card">
+          <p class="project-name">iRegister</p>
+          <p class="project-desc">
+            Course scheduling optimizer for BYU-Idaho students. Scrapes the live course catalog, runs a
+            constraint-satisfaction algorithm to generate optimal schedules, and serves results via a
+            Next.js interface. Deployed serverlessly on AWS Lambda with DynamoDB persistence.
+          </p>
+          <div class="tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">AWS Lambda</span>
+            <span class="tag">DynamoDB</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/YOUR-HANDLE/iregister" target="_blank" class="project-link">GitHub</a>
+            <!-- <a href="https://iregister.app" target="_blank" class="project-link">Live</a> -->
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-name">BootWatch</p>
+          <p class="project-desc">
+            Civic-tech PWA addressing predatory vehicle booting in Rexburg. Users report and look up boot
+            incidents on an interactive map. Built with Next.js 14 App Router, real-time Supabase data,
+            and Mapbox GL JS. Designed as a community-owned transparency tool.
+          </p>
+          <div class="tags">
+            <span class="tag">Next.js 14</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Mapbox GL JS</span>
+            <span class="tag">PWA</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/YOUR-HANDLE/bootwatch" target="_blank" class="project-link">GitHub</a>
+            <!-- <a href="https://bootwatch.app" target="_blank" class="project-link">Live</a> -->
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-name">U2-QBO Migration</p>
+          <p class="project-desc">
+            Led cloud-native re-architecture of a production SaaS platform from a legacy deployment to
+            AWS. Designed the Lambda + API Gateway + DynamoDB stack, established IAM least-privilege
+            policies, and implemented CI/CD workflows — delivering on a sprint schedule as the sole
+            infrastructure owner.
+          </p>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">IaC</span>
+            <span class="tag">API Gateway</span>
+            <span class="tag">QuickBooks API</span>
+          </div>
+          <div class="project-links">
+            <a href="https://linkedin.com/in/YOUR-HANDLE" target="_blank" class="project-link">Details</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <p class="label">Toolkit</p>
+      <h2>Skills</h2>
+
+      <div class="skills-grid">
+        <div>
+          <p class="skills-group-label">Languages</p>
+          <div class="skills-chips">
+            <span class="chip">Python</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">C#</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+        <div>
+          <p class="skills-group-label">Cloud & Infra</p>
+          <div class="skills-chips">
+            <span class="chip">AWS Lambda</span>
+            <span class="chip">DynamoDB</span>
+            <span class="chip">API Gateway</span>
+            <span class="chip">IAM</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Nginx</span>
+          </div>
+        </div>
+        <div>
+          <p class="skills-group-label">Frontend & Backend</p>
+          <div class="skills-chips">
+            <span class="chip">Next.js</span>
+            <span class="chip">React</span>
+            <span class="chip">Supabase</span>
+            <span class="chip">Mapbox GL JS</span>
+            <span class="chip">REST APIs</span>
+          </div>
+        </div>
+        <div>
+          <p class="skills-group-label">AI & Automation</p>
+          <div class="skills-chips">
+            <span class="chip">n8n</span>
+            <span class="chip">LLM Integration</span>
+            <span class="chip">Agentic Workflows</span>
+            <span class="chip">Prompt Engineering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span class="footer-name">Hunter</span>
+    <span class="footer-copy">Rexburg, ID · Open to remote roles</span>
+  </footer>
+
+</body>
+</html>
+```
